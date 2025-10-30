@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import AppKit
 
 enum Preferences {
     
@@ -102,6 +103,28 @@ enum Preferences {
         
         set {
             UserDefaults.standard.set(newValue, forKey: UserDefaults.Key.useFullStatusBarOnExpandEnabled)
+        }
+    }
+    
+    static var keepInDock: Bool {
+        get {
+            UserDefaults.standard.bool(forKey: UserDefaults.Key.keepInDock)
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: UserDefaults.Key.keepInDock)
+            
+            DispatchQueue.main.async {
+                if newValue {
+                    NSApp.setActivationPolicy(.regular)
+                    NSApp.activate(ignoringOtherApps: true)
+                } else {
+                    NSApp.setActivationPolicy(.accessory)
+                    NSApp.deactivate()
+                }
+            }
+            
+            NotificationCenter.default.post(Notification(name: .prefsChanged))
         }
     }
     

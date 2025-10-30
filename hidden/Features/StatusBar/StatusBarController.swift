@@ -154,10 +154,7 @@ class StatusBarController {
         if let button = btnExpandCollapse.button {
             button.image = Assets.expandImage
         }
-        if Preferences.useFullStatusBarOnExpandEnabled {
-            NSApp.setActivationPolicy(.accessory)
-            NSApp.deactivate()
-        }
+        applyActivationPolicyForCurrentPreferences(isExpanded: false)
     }
     private func expandMenubar() {
         guard self.isCollapsed else {return}
@@ -167,11 +164,7 @@ class StatusBarController {
         }
         autoCollapseIfNeeded()
         
-        if Preferences.useFullStatusBarOnExpandEnabled {
-            NSApp.setActivationPolicy(.regular)
-            NSApp.activate(ignoringOtherApps: true)
-            
-        }
+        applyActivationPolicyForCurrentPreferences(isExpanded: true)
     }
     
     private func autoCollapseIfNeeded() {
@@ -189,6 +182,21 @@ class StatusBarController {
                     self?.collapseMenuBar()
                 }
             }
+        }
+    }
+    
+    private func applyActivationPolicyForCurrentPreferences(isExpanded: Bool) {
+        if Preferences.keepInDock {
+            NSApp.setActivationPolicy(.regular)
+        } else {
+            NSApp.setActivationPolicy(.accessory)
+            if !isExpanded {
+                NSApp.deactivate()
+            }
+        }
+        
+        if isExpanded && Preferences.useFullStatusBarOnExpandEnabled {
+            NSApp.activate(ignoringOtherApps: true)
         }
     }
     

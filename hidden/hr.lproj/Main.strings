@@ -56,10 +56,10 @@
 "ML6-W4-U8X.paletteLabel" = "Prilagođen prikaz";
 
 /* Class = "NSToolbarItem"; label = "Custom View"; ObjectID = "NIO-JJ-pjq"; */
-"NIO-JJ-pjq.label" = "Prilagođen prikaz";
+"NIO-JJ-pjq.label" = "";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Custom View"; ObjectID = "NIO-JJ-pjq"; */
-"NIO-JJ-pjq.paletteLabel" = "Prilagođen prikaz";
+"NIO-JJ-pjq.paletteLabel" = "";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "Usluge";

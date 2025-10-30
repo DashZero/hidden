@@ -12,7 +12,7 @@ import HotKey
 @NSApplicationMain
 
 class AppDelegate: NSObject, NSApplicationDelegate{
-    
+    var window: NSWindow!
     var statusBarController = StatusBarController()
     
     var hotKey: HotKey? {
@@ -28,6 +28,7 @@ class AppDelegate: NSObject, NSApplicationDelegate{
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         setupAutoStartApp()
         registerDefaultValues()
+        applyActivationPolicyFromPreferences()
         setupHotKey()
         openPreferencesIfNeeded()
         detectLTRLang()
@@ -50,7 +51,8 @@ class AppDelegate: NSObject, NSApplicationDelegate{
             UserDefaults.Key.isAutoHide: true,
             UserDefaults.Key.numberOfSecondForAutoHide: 10.0,
             UserDefaults.Key.areSeparatorsHidden: false,
-            UserDefaults.Key.alwaysHiddenSectionEnabled: false
+            UserDefaults.Key.alwaysHiddenSectionEnabled: false,
+            UserDefaults.Key.keepInDock: false
          ])
     }
     
@@ -64,6 +66,15 @@ class AppDelegate: NSObject, NSApplicationDelegate{
         // so some behavier of the app needs to be changed in these cases
         
         Constant.isUsingLTRLanguage = (NSApplication.shared.userInterfaceLayoutDirection == .leftToRight)
+    }
+    
+    private func applyActivationPolicyFromPreferences() {
+        if Preferences.keepInDock {
+            NSApp.setActivationPolicy(.regular)
+        } else {
+            NSApp.setActivationPolicy(.accessory)
+            NSApp.deactivate()
+        }
     }
    
 }

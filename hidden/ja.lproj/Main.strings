@@ -183,19 +183,19 @@
 "Lbh-J2-qVU.title" = "\tLeft to Right";
 
 /* Class = "NSToolbarItem"; label = "Custom View"; ObjectID = "ML6-W4-U8X"; */
-"ML6-W4-U8X.label" = "Custom View";
+"ML6-W4-U8X.label" = "General";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Custom View"; ObjectID = "ML6-W4-U8X"; */
-"ML6-W4-U8X.paletteLabel" = "Custom View";
+"ML6-W4-U8X.paletteLabel" = "General";
 
 /* Class = "NSMenuItem"; title = "Copy Ruler"; ObjectID = "MkV-Pr-PK5"; */
 "MkV-Pr-PK5.title" = "Copy Ruler";
 
 /* Class = "NSToolbarItem"; label = "Custom View"; ObjectID = "NIO-JJ-pjq"; */
-"NIO-JJ-pjq.label" = "Custom View";
+"NIO-JJ-pjq.label" = "";
 
 /* Class = "NSToolbarItem"; paletteLabel = "Custom View"; ObjectID = "NIO-JJ-pjq"; */
-"NIO-JJ-pjq.paletteLabel" = "Custom View";
+"NIO-JJ-pjq.paletteLabel" = "";
 
 /* Class = "NSMenuItem"; title = "Services"; ObjectID = "NMo-om-nkz"; */
 "NMo-om-nkz.title" = "サービス";

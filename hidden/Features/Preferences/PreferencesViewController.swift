@@ -26,7 +26,7 @@ class PreferencesViewController: NSViewController {
     
     
     @IBOutlet weak var checkBoxAutoHide: NSButton!
-    @IBOutlet weak var checkBoxKeepInDock: NSButton!
+    @IBOutlet weak var checkBoxKeepInDock: NSButton?
     @IBOutlet weak var checkBoxLogin: NSButton!
     @IBOutlet weak var checkBoxShowPreferences: NSButton!
     @IBOutlet weak var checkBoxShowAlwaysHiddenSection: NSButton!
@@ -72,6 +72,10 @@ class PreferencesViewController: NSViewController {
     
     @IBAction func showPreferencesChanged(_ sender: NSButton) {
         Preferences.isShowPreference = sender.state == .on
+    }
+    
+    @IBAction func keepInDockChanged(_ sender: NSButton) {
+        Preferences.keepInDock = sender.state == .on
     }
     
     
@@ -156,6 +160,7 @@ class PreferencesViewController: NSViewController {
         checkBoxAutoHide.state = Preferences.isAutoHide ? .on : .off
         checkBoxShowPreferences.state = Preferences.isShowPreference ? .on : .off
         checkBoxShowAlwaysHiddenSection.state = Preferences.alwaysHiddenSectionEnabled ? .on : .off
+        checkBoxKeepInDock?.state = Preferences.keepInDock ? .on : .off
         timePopup.selectItem(at: SelectedSecond.secondToPossition(seconds: Preferences.numberOfSecondForAutoHide))
     }
     
